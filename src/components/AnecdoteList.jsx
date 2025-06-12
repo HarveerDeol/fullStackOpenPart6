@@ -3,6 +3,7 @@ import { AddToVote } from '../reducers/anecdoteReducer'
 
 
 const Anecdote = ({anecdote, handleClick})=>{
+
     return (
         <div>
             <div>
@@ -17,8 +18,15 @@ const Anecdote = ({anecdote, handleClick})=>{
 }
 const AnecdoteList = ()=>{
     const dispatch = useDispatch()
-    const anecdotes = useSelector(state => state)
-
+    const anecdotes = useSelector(state => {
+      return state.anecdote.filter(item =>{
+        if (item.content.includes(state.filter)){
+          return item
+        }
+     })
+    })
+    console.log("anecdotes",anecdotes)
+  
     return (
         <div>
         {anecdotes.map(anecdote =>
