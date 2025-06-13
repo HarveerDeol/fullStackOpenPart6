@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { newVote, newAnecdote } from '../reducers/notificationReducer'
+
 const Notification = () => {
     const dispatch = useDispatch()
     const notification = useSelector(state=>state.notification)
