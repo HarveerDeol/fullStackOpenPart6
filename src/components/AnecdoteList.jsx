@@ -16,6 +16,7 @@ const Anecdote = ({anecdote, handleClick})=>{
         </div>
     )
 }
+
 const AnecdoteList = ()=>{
     const dispatch = useDispatch()
     const anecdotes = useSelector(state => {
@@ -34,7 +35,7 @@ const AnecdoteList = ()=>{
               key={anecdote.id}
               anecdote={anecdote}
               handleClick={() => 
-                dispatch(AddToVote(anecdote.id))
+                dispatch({ type: 'anecdotes/AddToVote', payload: anecdote.id })
               }
             />
           )}
