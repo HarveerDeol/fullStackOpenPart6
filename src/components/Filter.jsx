@@ -10,7 +10,13 @@ const Filter = () => {
 
   return (
     <div style={style}>
-     filter <input  name='filter' onChange={(e)=>dispatch(filterChange(e.target.value))} />
+     filter <input  name='filter' onChange={(e)=> {
+      dispatch({ type: 'filter/filterChange', payload: e.target.value })
+      setTimeout(()=>{
+        dispatch({ type: 'notification/newFilter', payload: e.target.value })
+      }, 1000)
+      
+      }} />
     </div>
   )
 }

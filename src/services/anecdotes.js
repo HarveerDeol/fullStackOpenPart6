@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3001/'
+const baseURL = 'http://localhost:3001/anecdotes'
 
 const getAll = async () => {
     try {
@@ -11,3 +11,19 @@ const getAll = async () => {
     }
 }
 
+const createNew = async (content) => {
+    try {
+        const newAnecdote = {
+            content: content,
+            votes: 0
+          }
+        const response = await axios.post(baseURL, newAnecdote)
+        return response.data
+    } catch (error){
+        console.error(`anecdote post request failed: ${error}`)
+    }
+}
+
+
+
+export default { getAll, createNew }
